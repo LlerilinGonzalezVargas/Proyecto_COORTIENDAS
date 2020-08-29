@@ -1,0 +1,112 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background: url(../images/Fondo.jpg) no-repeat center top;
+  background-size: 100% 100%;
+ font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  height: 100vh;
+
+}
+html{
+  overflow-x: hidden;
+}
+select{
+  position:relative;
+ background-color: 
+ white; border: 2px solid gray; 
+ border-radius: 12px;
+ padding: 6px 48px;
+ font-size: 16px;  
+}
+.login-box {
+  width: 500px;
+  height: 650px;
+  background: #2090D5;
+  border-radius: 3%;
+  color: #000000;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -35%);
+  box-sizing: border-box;
+  padding: 70px 30px;
+}
+.login-box .avatar {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: -50px;
+  left: calc(50% - 50px);
+}
+
+.login-box h1 {
+  margin: 0;
+  padding: 0 0 20px;
+  text-align: center;
+  font-size: 32px;
+  font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+}
+
+.login-box label {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  display: block;
+}
+
+.login-box input {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+input[type="email"]
+                    {
+  height: 30px;
+  font-size: 16px;    
+  -webkit-border-radius: 10px;
+  -webkit-user-select: none;
+  background-color: white; 
+  border: 3px solid gray; 
+  border-radius: 12px; 
+  text-align: center;
+                    
+                    
+                    }
+.login-box input[type="text"], .login-box input[type="password"] {
+  text-align: center; 
+  border: 3px solid gray; 
+  border-radius: 12px; 
+  height: 30px;
+  font-size: 16px;
+}
+
+.login-box input[type="submit"] {
+  border: none;
+  outline: none;
+  height: 40px;
+  background: #b80f22;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 20px;
+}
+
+.login-box input[type="submit"]:hover {
+  cursor: pointer;
+  background: #20D599;
+  color: #000;
+}
+
+.login-box a {
+  text-decoration: none;
+  text-align: center;
+  color: black;   
+  font-size: 16px;
+  
+}
+
+.login-box a:hover {
+  color: #fff;
+}
