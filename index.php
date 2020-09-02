@@ -16,7 +16,7 @@
       <br>
       <form action="Validar.php" method="POST" accept-charset="utf-8" >
         <!-- USERNAME INPUT -->
-        <label for="username">Usuario</label>
+        <label for="username">anifgbfghfllo</label>
         <br>
         <input type="text" name="nombre" placeholder="Ingrese usuario">
         <!-- PASSWORD INPUT -->
