@@ -1,0 +1,26 @@
+<?php
+class TipoPago{
+
+  //Atributos
+  public $Id_tip_pag;
+  public $Nam_tip_pag;
+
+  //Metodos
+
+  public function TipoPago($Id_tip_pag){
+    $this->Id_tip_pag=$Id_tip_pag;
+   
+  }
+  public function Set_Nam_tip_pag($Nam_tip_pag){
+    $this->Nam_tip_pag=$Nam_tip_pag;
+  }
+  public function Get_Id_tip_pag(){
+    return $this->Id_tip_pag;
+  }
+  public function Get_Nam_tip_pag(){
+    return $this->Nam_tip_pag;
+  }
+
+
+}
+?>
