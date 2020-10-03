@@ -19,5 +19,20 @@ class EstadoProv{
   Public function Get_Name_est_prov(){
     return $this->name_est_prov;
   }
+  /*------------------- Metodos de consulta-------------------- */
+  public function Crear_EstadoProv($Id_est_prov  ,$name_est_prov){
+    $this->Id_est_prov=$Id_est_prov;
+  $this->name_est_prov=$name_est_prov;
+ 
+  }
+  public function Agregar_EstadoProv(){
+  
+  }
+  Public function Actualizar_EstadoProv($Id_est_prov){
+  
+  } 
+  Public function Consultar_EstadoProv(){
+  
+  }
 }
 ?>

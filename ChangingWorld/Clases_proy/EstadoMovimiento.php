@@ -19,5 +19,20 @@ class EstadoMovimiento{
   Public function Get_Nam_est_mov(){
     return $this->Nam_est_mov;
   }
+  /*------------------- Metodos de consulta-------------------- */
+  public function Crear_EstadoMovimiento($Id_est_mov  ,$Nam_est_mov){
+    $this->Id_est_mov=$Id_est_mov;
+    $this->Nam_est_mov=$Nam_est_mov;
+  
+  }
+  public function Agregar_EstadoMovimiento(){
+  
+  }
+  Public function Actualizar_EstadoMovimiento($Id_est_mov){
+  
+  } 
+  Public function Consultar_EstadoMovimiento(){
+  
+  }
 }
 ?>

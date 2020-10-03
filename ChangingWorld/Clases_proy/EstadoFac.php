@@ -20,7 +20,21 @@ class EstadoFac{
   public function Get_Nam_est_fac(){
     return $this->Nam_est_fac;
   }
+/*------------------- Metodos de consulta-------------------- */
+public function Crear_EstadoFac($Id_est_fac  ,$Nam_est_fac){
+  $this->Id_est_fac=$Id_est_fac;
+$this->Nam_est_fac=$Nam_est_fac;
 
+}
+public function Agregar_EstadoFac(){
+
+}
+Public function Actualizar_EstadoFac($Id_est_fac){
+
+} 
+Public function Consultar_EstadosFac(){
+
+}
 
 }
 ?>
