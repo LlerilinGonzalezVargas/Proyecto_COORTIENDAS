@@ -1,0 +1,252 @@
+/*Header*/
+header{
+  height: 85px; 
+  width:100%; 
+  overflow: hidden; 
+  background:#fff010; 
+  margin-bottom:30px;
+}
+
+.wrapper{
+  width:100%;
+  max-width:1000px;
+  margin:auto;
+  overflow:hidden;
+}
+
+header .logo{
+  float:left;
+}
+
+header img{
+  width: 200px; 
+  height: 84px;
+}
+
+header nav{
+  float:right;
+  line-height:101px;
+}
+
+header nav a {
+  display:inline-block;
+  color: black;
+  padding:10px 20px;
+  text-decoration:none;
+  line-height:normal;
+  font-size:15px;
+  font-family:"Comfortaa";
+  font-weight:bold;
+  -webkit-transition: all 500ms ease;
+  -moz-transition: all 500ms ease;
+  -ms-transition: all 500ms ease;
+  -o-transition: all 500ms ease;
+  transition: all 500ms ease;
+  margin-right: 10px;}
+
+header nav a:hover{
+  background:#179d42;
+  border-radius:50px;
+}
+
+nav a:hover{
+  color: white;
+}
+
+.header2{
+  position: fixed;
+  height:85px;
+}
+
+.header2 .logo{
+  line-height:100px;
+  font-size:30px;
+}
+
+.header2 nav{
+  line-height:100px;
+}
+
+.contenido p{
+  margin-bottom:1em;
+}
+
+.contenido h3{
+  display:block;
+  padding:20px;
+  color:#fff;
+  text-align:center;
+  background:#F56F3A;
+  margin-bottom:1em;
+}
+
+@media screen and (max-width: 950px){
+  header .logo,header nav {
+      width:100%;
+      text-align:center;
+      line-height:100px;
+      }
+      .header2{
+      height:auto;
+      }
+      .header2 .logo{
+      line-height:50px;
+      }
+      .header2 nav{
+      line-height:50px;
+      }
+  }
+/*Slider*/
+.slider{
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+}
+
+.slider ul{
+  display: flex;
+  padding: 0;
+  width: 600%;
+  animation: cambio 20s infinite alternate linear;
+}
+
+.slider li{
+  width: 100%;
+  list-style: none;
+}
+
+.slider img{
+  width: 100%;
+}
+
+@keyframes cambio{
+  0% {margin-left: 0;}
+  20% {margin-left: 0;}
+  
+  25% {margin-left: -100%;}
+  45% {margin-left: -100%;}
+  
+  50% {margin-left: -200%;}
+  70% {margin-left: -200%;}
+  
+  75% {margin-left: -300%;}
+  100% {margin-left: -300%;}
+}
+
+.group {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 30px; }
+  .group input,
+  .group textarea {
+    font-size: 12px;
+    font-style: italic;
+    padding: 10px;
+    display: block;
+    width: 100%;
+    height: 35px;
+    border: none;
+    border-bottom: 2px solid;
+    border-color: #f1f1f1; }
+    .group input:focus,
+    .group textarea:focus {
+      outline: none;
+      box-shadow: none; }
+  .group label {
+    color: #878787;
+    font-style: italic;
+    font-size: 12px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 0;
+    top: 5px;
+    transition: 0.5s ease all; }
+  .group .bar {
+    position: relative;
+    display: block;
+    width: 100%; }
+    .group .bar:before, .group .bar:after {
+      content: '';
+      height: 2px;
+      width: 0;
+      bottom: 0;
+      position: absolute;
+      background-color: #30336b;
+      transition: 0.5s ease all; }
+    .group .bar:before {
+      left: 50%; }
+    .group .bar:after {
+      right: 50%; }
+  .group .highlight {
+    position: absolute;
+    height: 60%;
+    width: 100px;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5; }
+  .group textarea {
+    min-height: 90px; }
+
+/* Form Active State */
+input:focus ~ label,
+textarea:focus ~ label,
+input:valid ~ label,
+textarea:valid ~ label {
+  top: -15px;
+  font-size: 12px;
+  color: #30336b; }
+
+input:focus ~ .bar:before,
+textarea:focus ~ .bar:before,
+input:focus ~ .bar:after,
+textarea:focus ~ .bar:after {
+  width: 50%; }
+
+input:focus ~ .highlight,
+textarea:focus ~ .highlight {
+  -webkit-animation: inputHighlighter 0.3s ease;
+  animation: inputHighlighter 0.3s ease; }
+
+/* Animations */
+@-webkit-keyframes inputHighlighter {
+  from {
+    background-color: #30336b; }
+  to {
+    width: 0;
+    background-color: transparent; } }
+@-moz-keyframes inputHighlighter {
+  from {
+    background-color: #30336b; }
+  to {
+    width: 0;
+    background-color: transparent; } }
+@keyframes inputHighlighter {
+  from {
+    background-color: #30336b; }
+  to {
+    width: 0;
+    background-color: transparent; } }
+.map-area {
+  position: relative;
+  z-index: 1; }
+  .map-area #googleMap {
+    width: 100%;
+    height: 690px; }
+    @media only screen and (min-width: 992px) and (max-width: 1199px) {
+      .map-area #googleMap {
+        height: 500px; } }
+    @media only screen and (min-width: 768px) and (max-width: 991px) {
+      .map-area #googleMap {
+        height: 450px; } }
+    @media only screen and (max-width: 767px) {
+      .map-area #googleMap {
+        height: 400px; } }
+
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none; }
