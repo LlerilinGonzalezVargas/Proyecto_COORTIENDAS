@@ -5,54 +5,59 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <link rel="icon" href="../images/F.png">
+    <link rel="icon" href="images/F.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
-    <link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
     
-    <link rel="stylesheet" href="../css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="../css/magnific-popup.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
 
-    <link rel="stylesheet" href="../css/aos.css">
+    <link rel="stylesheet" href="css/aos.css">
     <link href="css/responsive-color.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="../css/ionicons.min.css">
+    <link rel="stylesheet" href="css/ionicons.min.css">
     
-    <link rel="stylesheet" href="../css/flaticon.css">
-    <link rel="stylesheet" href="../css/icomoon.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../Estilo.css">
-    <!-- <link rel="stylesheet" href="css/animateda.css"> -->
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animateda.css">
   </head>
   
   <body>
-    <header class="header">
-      <div class="wrapper">
+    
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar" data-aos="fade-down" data-aos-delay="500">
+      <div class="container" style=" margin-left: ">
+        <a class="navbar-brand" href="Inicio.html"><img style="width: 50%;" src="images/Logo.png"></a>
+      </div>
       <div class="container">
-        <a class="navbar-brand" href="index.html"><img style="width: 50%;" src="../images/Logo.png"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="oi oi-menu"></span> Menú
         </button>
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item" ><a href="contacto.html" class="nav-link">Contáctenos</a></li>
-            <li class="nav-item"><a href="index.html" class="nav-link"><strong style="color: green;"> Productos </strong></a></li>
+            <li class="nav-item"><a href="contacto.php" class="nav-link">Contáctenos</a></li>
+            <li class="nav-item"><a href="indexclientes.php" class="nav-link"><strong style="color: green;"> Productos </strong></a></li>
+            <li class="nav-item"><a href="indexclientes.php" class="nav-link">Promociones</a></li>
           </ul>
           <!-- Search Form Area Start -->
                                <div class="login-register-btn" >
-                                    <a href="php/IniciarSesion.php"><font style="vertical-align: inherit; font-size: 15px;"><font style="vertical-align: inherit;">Iniciar Sesion</font></font></a><br>
-                                    <a href="php/Registro.php"><font style="vertical-align: inherit; font-size: 12px;"><font style="vertical-align: inherit;">Registrarse</font></font></a>
-                                </div>
-                    
+                                   <img class="user" src="images/user.png" alt="Ver info" title="User" >
+                                   <ul class="desplegable">
+                                     <li><a href="">Perfil</a></li>
+                                     <li><a href="">Configuracion</a></li>
+                                     <li><a href="Cerrar.php">Cerrar Sesion</a></li>
+                                   </ul>
+                               </div>
+                                                                   
         </div>
       </div>
-    </nav></div></header>
+    </nav>
     <!-- END nav -->
 
-   <!--  <section class="ftco-cover" style="background-image: url(images/Comida.jpeg);" id="section-home" data-aos="fade"  data-stellar-background-ratio="0.5">
+    <section class="ftco-cover" style="background-image: url(images/Comida.jpeg);" id="section-home" data-aos="fade"  data-stellar-background-ratio="0.5">
       <div class="container">
         <div class="row align-items-center ftco-vh-100">
           <div class="col-md-7">
@@ -61,18 +66,7 @@
           </div>
         </div>
       </div>
-    </section> -->
-    <section class="contenido wrapper">
-      <div class="slider">
-         <ul>
-           <li><a href="#"><img src="../Imagenes/slider.jpg" alt=""></a></li>
-           <li><a href="#"><img src="../Imagenes/slider1.jpg" alt=""></a></li>
-           <li><a href="#"><img src="../Imagenes/slider2.jpg" alt=""></a></li>
-           <li><a href="#"><img src="../Imagenes/slider3.jpg" alt=""></a></li><li>
-           <li><a href="#"><img src="../Imagenes/slider.jpg" alt=""></a></li>
-         </ul>
-       </div>
-     </section>
+    </section>
     <!-- END section -->
 
 <section class="mosh-team-area section_padding_100">
@@ -91,7 +85,7 @@
                         <div class="single-team-slide text-center">
                             <!-- Thumbnail -->
                             <div class="single-team-slide team-thumbnail">
-                                <img src="../images/Vinos y Licores.jpg" alt="">
+                                <img src="images/Vinos y Licores.jpg" alt="">
                             </div>
                             <!-- Meta Info -->
                             <div class="team-meta-info">
@@ -103,7 +97,7 @@
                         <div class="single-team-slide text-center">
                             <!-- Thumbnail -->
                             <div class="team-thumbnail">
-                                <img src="../images/descarga.jpg" alt="">
+                                <img src="images/descarga.jpg" alt="">
                             </div>
                             <!-- Meta Info -->
                             <div class="team-meta-info">
@@ -115,7 +109,7 @@
                         <div class=" text-center">
                             <!-- Thumbnail -->
                             <div class="team-thumbnail">
-                                <img src="../images/Snacks.jpg" alt="">
+                                <img src="images/Snacks.jpg" alt="">
                             </div>
                             <!-- Meta Info -->
                             <div class="team-meta-info">
@@ -128,7 +122,7 @@
                         <div class=" text-center">
                             <!-- Thumbnail -->
                             <div class="single-team-slide team-thumbnail">
-                                <img src="../images/Panadería y Repostería.jpg" alt="">
+                                <img src="images/Panadería y Repostería.jpg" alt="">
                             </div>
                             <!-- Meta Info -->
                             <div class="team-meta-info">
@@ -140,7 +134,7 @@
                         <div class=" text-center">
                             <!-- Thumbnail -->
                             <div class="single-team-slide team-thumbnail">
-                                <img src="../images/Aseo.jpg" alt="">
+                                <img src="images/Aseo.jpg" alt="">
                             </div>
                             <!-- Meta Info -->
                             <div class="single-team-slide team-meta-info">
@@ -152,7 +146,7 @@
                         <div class="single-team-slide text-center">
                             <!-- Thumbnail -->
                             <div class="team-thumbnail">
-                                <img src="../images/Aceite y Mantequilla.jpg" alt="">
+                                <img src="images/Aceite y Mantequilla.jpg" alt="">
                             </div>
                             <!-- Meta Info -->
                             <div class="team-meta-info">
@@ -178,7 +172,7 @@
 
 <div class="row">
         <div class="col-md-6 col-lg-4" data-aos="fade-up">
-          <a href="Producto.html" class="block-5" style="background-image: url('../images/Pan_Bimbo.jpg');">
+          <a href="Vuelos.html" class="block-5" style="background-image: url('images/Pan_Bimbo.jpg');">
             <div class="text">
               <div class="subheading"></div>
               <h3 class="heading">Pan Bimbo blanco 600g $2.100</h3>
@@ -189,7 +183,7 @@
           </a>
         </div>
         <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-          <a href="Producto.html" class="block-5" style="background-image: url('../images/MegalitroA.jpg');">
+          <a href="Paquetes.html" class="block-5" style="background-image: url('images/MegalitroA.jpg');">
             <div class="text">
               <div class="subheading"></div>
               <h3 class="heading">Leche alqueria Entera (Megalitro) $2.500</h3>
@@ -200,7 +194,7 @@
           </a>
         </div>
         <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-          <a href="Producto.html" class="block-5" style="background-image: url('../images/Pan_BimboIntegral.jpg');">
+          <a href="blog.html" class="block-5" style="background-image: url('images/Pan_BimboIntegral.jpg');">
             <div class="text">
               <div class="subheading"></div>
               <h3 class="heading">Pan bimbo integral 650g $3.100</h3>
@@ -211,7 +205,7 @@
           </a>
         </div>
         <div class="col-md-6 col-lg-4" data-aos="fade-up">
-          <a href="Producto.html" class="block-5" style="background-image: url('../images/bg.jpg');">
+          <a href="Vuelos.html" class="block-5" style="background-image: url('images/bg.jpg');">
             <div class="text">
               <div class="subheading"></div>
               <h3 class="heading">Tienda D1</h3>
@@ -222,7 +216,7 @@
           </a>
         </div>
         <div class="col-md-6 col-lg-4" data-aos="fade-up">
-          <a href="Producto.html" class="block-5" style="background-image: url('../images/Merca.jpeg');">
+          <a href="Vuelos.html" class="block-5" style="background-image: url('images/Merca.jpeg');">
             <div class="text">
               <div class="subheading"></div>
               <h3 class="heading">Tienda El amigo</h3>
@@ -233,7 +227,7 @@
           </a>
         </div>
         <div class="col-md-6 col-lg-4" data-aos="fade-up">
-          <a href="Producto.html" class="block-5" style="background-image: url('../images/Tiendita.jpg');">
+          <a href="Vuelos.html" class="block-5" style="background-image: url('images/Tiendita.jpg');">
             <div class="text">
               <div class="subheading"></div>
               <h3 class="heading">Tienda El paisa</h3>
@@ -250,14 +244,14 @@
   </div>
 
   <!-- ***** CTA Area Start ***** -->
-    <section class="mosh-call-to-action-area bg-img bg-overlays section_padding_100" style="background-image: url(../images/Foto.jpg);">
+    <section class="mosh-call-to-action-area bg-img bg-overlays section_padding_100" style="background-image: url(images/Foto.jpg);">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="cta-content text-center fadeIn" data-wow-delay="0.5s">
                         <div class="section-heading">
                                  <h2>¿Alguna duda?</h2>
-                            <button type="submit" class="mosh-btn original-btn">Contactanos</button>
+                            <button type="submit" class="mosh-btn original-btn"><a href="contacto.php">Contactanos</a></button>
                         </div>
                     </div>
                 </div>
@@ -274,10 +268,10 @@
           <div class="row">
             <div class="col-md">
               <div class="ftco-footer-widget mb-4">
-                <h2 class="ftco-heading-2">Acerca de Coortiendas</h2>
+                <h2 class="ftco-heading-2">Acerca de CHANGING WORLD</h2>
                 <ul class="list-unstyled">
-                  <li><a href="Sobre.html" class="py-2 d-block">¿Quiénes somos?</a></li>
-                  <li><a href="contacto.html" class="py-2 d-block">Contactenos</a></li>
+                  <li><a href="Sobre.php" class="py-2 d-block">¿Quiénes somos?</a></li>
+                  <li><a href="contacto.php" class="py-2 d-block">Contactenos</a></li>
                 </ul>
               </div>
             </div>
@@ -300,20 +294,20 @@
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
- <script src="../js/jquery.min.js"></script>
-  <script src="../js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="../js/popper.min.js"></script>
-  <script src="../js/bootstrap2.min.js"></script>
-  <script src="../js/jquery.easing.1.3.js"></script>
-  <script src="../js/jquery.waypoints.min.js"></script>
-  <script src="../js/jquery.stellar.min.js"></script>
-  <script src="../js/owl.carousel.min.js"></script>
-  <script src="../js/jquery.magnific-popup.min.js"></script>
-  <script src="../js/aos.js"></script>
-  <script src="../js/jquery.animateNumber.min.js"></script>
+ <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap2.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="../js/google-map.js"></script>
-  <script src="../js/main.js"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script type="text/javascript" src="jquery.immersive-slider.js"></script>
 
@@ -324,15 +318,15 @@
     <!-- ***** Footer Area End ***** -->
 
     <!-- jQuery-2.2.4 js -->
-    <script src="../js/jquery-2.2.4.min.js"></script>
+    <script src="js/jquery-2.2.4.min.js"></script>
     <!-- Popper js -->
-    <script src="../js/Motpopper.min.js"></script>
+    <script src="js/Motpopper.min.js"></script>
     <!-- Bootstrap js -->
-    <script src="../js/Onebootstrap.min.js"></script>
+    <script src="js/Onebootstrap.min.js"></script>
     <!-- All Plugins js -->
-    <script src="../js/plugins.js"></script>
+    <script src="js/plugins.js"></script>
     <!-- Active js -->
-    <script src="../js/active.js"></script>
+    <script src="js/active.js"></script>
     
   </body>
 </html>

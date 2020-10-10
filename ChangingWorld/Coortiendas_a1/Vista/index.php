@@ -1,3 +1,15 @@
+<?php
+require "../ConexionDataBase.php";
+require "../Modelo/Producto.php";
+$objProd= new Producto(); 
+$ret_Tot=$objProd->Consultar_Producto();
+$sql_t="select * from tip_prod";
+
+$conectarse=Conectarse();
+$Tip_prod_res=$conectarse->query($sql_t);
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -38,14 +50,22 @@
         </button>
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item" ><a href="contacto.html" class="nav-link">Contáctenos</a></li>
+            <li class="nav-item" ><a href="contacto.php" class="nav-link">Contáctenos</a></li>
             <li class="nav-item"><a href="index.html" class="nav-link"><strong style="color: green;"> Productos </strong></a></li>
           </ul>
           <!-- Search Form Area Start -->
-                               <div class="login-register-btn" >
+          <?php
+          if (!isset($_SESSION['Cliente']||!isset($_SESSION['Empleado'])) {
+            
+            echo'
+            <div class="login-register-btn" >
                                     <a href="php/IniciarSesion.php"><font style="vertical-align: inherit; font-size: 15px;"><font style="vertical-align: inherit;">Iniciar Sesion</font></font></a><br>
                                     <a href="php/Registro.php"><font style="vertical-align: inherit; font-size: 12px;"><font style="vertical-align: inherit;">Registrarse</font></font></a>
                                 </div>
+            ';
+          }
+          ?>
+                               
                     
         </div>
       </div>
@@ -88,6 +108,26 @@
                 <div class="col-12">
                     <div class="mosh-team-slides owl-carousel">
                         <!-- Single Team Slide -->
+<?php
+while ($tp_prod=$Tip_prod_res->fetch_array()) {
+      $sql_p="select * from producto where Tip_prod='$tp_prod->Id_tip_prod' and Est_prod='1'";
+    $img_prod_res=$conectarse->query($sql_p);
+  while ($img_prod=$img_prod_res->fetch_object()) {
+    
+  }
+  echo '<div class="single-team-slide text-center">
+  <!-- Thumbnail -->
+  <div class="single-team-slide team-thumbnail">
+      <img src="../images/Vinos y Licores.jpg" alt="">//como colocar la img???-------------
+  </div>
+  <!-- Meta Info -->
+  <div class="team-meta-info">
+      <h4 value=" ' . $tp_prod->Id_tip_prod . '">' . $tp_prod->Nam_tip_prod . '</h4>
+  </div>
+  <!-- Social Info -->
+  </div>';
+}
+?>
                         <div class="single-team-slide text-center">
                             <!-- Thumbnail -->
                             <div class="single-team-slide team-thumbnail">
@@ -99,6 +139,8 @@
                             </div>
                             <!-- Social Info -->
                         </div>
+
+
                         <!-- Single Team Slide -->
                         <div class="single-team-slide text-center">
                             <!-- Thumbnail -->
