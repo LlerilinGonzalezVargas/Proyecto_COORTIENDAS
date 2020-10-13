@@ -110,6 +110,14 @@ Public function Consultar_Soles_emp($Est_sol_emp,$Tip_usu){
   $this->Conexion->close();
   return $resultado;	
 }
+Public function Consultar_Sol_emp($Id_sol_emp){
+  $this->Conexion=c ();   
+  $sql="select * from solic_emp,tip_doc,tip_usu,est_sol,est_usu where Est_sol_emp='$Est_sol_emp' and Tip_usu='$Tip_usu' and (solic_emp.Est_sol_emp=est_sol.Id_est_sol) and (solic_emp.Tip_usu=tip_usu.Id_tip_usu) and (solic_emp.Tip_doc_usu=tip_doc.Id_tip_doc)";
+  $resultado=$this->Conexion->query($sql);
+ 
+  $this->Conexion->close();
+  return $resultado;	
+}
 
 }
 ?>

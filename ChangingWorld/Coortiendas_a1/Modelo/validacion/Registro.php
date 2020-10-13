@@ -7,9 +7,10 @@ require "../Solicitud_empleado.php";
 require "../TipUsu.php";
 require "../TipoDoc.php";
 /* require "../TipUsu.php"; */
+extract ($_REQUEST);
 if (isset($_REQUEST['Registrarse'])) {
   session_start();
-  extract ($_REQUEST);
+  
 $conectarse=Conectarse();
 $objTipUsu= new TipUsu();
 $res_TipUsu=$objTipUsu->Consultar_TipUsu();
@@ -34,12 +35,12 @@ $pass=password_hash($_REQUEST['Pass'], PASSWORD_DEFAULT,['cost' => 10]);
         
 
           echo "<script type='text/javascript'>alert('Se ha registrado correctamente, ahora puede ingresar al sistema de información para obtener todos los beneficios.');
-          window.location='../../Vista/login.php';
+          window.location='../../Vista/frmlogin.php';
           </script>
           ";
         }else {
           echo "<script type='text/javascript'>alert('Esta Cuenta de usuario ya se encuentra registrada, intente nuevamente.');
-          window.location='../../Vista/.php';
+          window.location='../../Vista/formregistro.php';
           </script>
           ";
         }
@@ -60,7 +61,7 @@ $pass=password_hash($_REQUEST['Pass'], PASSWORD_DEFAULT,['cost' => 10]);
           date_default_timezone_set("America/Bogota");
           $Fech_Sol= date("Y-m-d H:i:s ");
           $objEmpleado=new Solicitud_empleado();
-          $Est_sol_emp='3';
+          $Est_sol_emp='3'; 
           /* $edadNac=$_REQUEST['FechNac'].getYear();
           echo"<script type='text/javascript'>alert(" . $edadNac . ");
           
@@ -71,19 +72,19 @@ $pass=password_hash($_REQUEST['Pass'], PASSWORD_DEFAULT,['cost' => 10]);
           $objEmpleado->Crear_Sol_eml($Est_sol_emp,$_REQUEST["Cargo"] ,$_REQUEST["Tip_doc"] ,$_REQUEST["cc"] ,$Solic  ,$email  ,$pass  ,$_REQUEST["FechNac"]  ,$Fech_Sol );
           $objEmpleado->Agregar_Sol_emp();
           echo "<script type='text/javascript'>alert('Se ha enviado la solicitud de registro, se le notificará la respuesta por medio de su correo, gracias.');
-          
+          window.location='../../Vista/index.php';
           </script>
           ";
         }else {
           echo "<script type='text/javascript'>alert('Este usuario ya se encuentra registradó, intente nuevamente.');
-          window.location='../../Vista/registro.php';
+          window.location='../../Vista/frmregistro.php';
           </script>
           ";
         }
 
         }else {
           echo "<script type='text/javascript'>alert('Este usuario ya realizó solicitud de registro, intente nuevamente.');
-          window.location='../../Vista/registro.php';
+          window.location='../../Vista/frmregistro.php';
           </script>
           ";
         }

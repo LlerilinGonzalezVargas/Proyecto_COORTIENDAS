@@ -1,12 +1,16 @@
 <?php
-require "../ConexionDataBase.php";
+require "../Modelo/ConexionDataBase.php";
 require "../Modelo/Producto.php";
+require "../Modelo/TipProd.php";
 $objProd= new Producto(); 
 $ret_Tot=$objProd->Consultar_Producto();
-$sql_t="select * from tip_prod";
+$res_Prod=$objProd->Consultar_Productos();
 
-$conectarse=Conectarse();
-$Tip_prod_res=$conectarse->query($sql_t);
+/* $sql_t="select * from tip_prod"; */
+$objTipProd= new TipProd();
+$Tip_prod_res=$objTipProd->Consultar_Prod_TipProd();
+/* $conectarse=Conectarse();
+$Tip_prod_res=$conectarse->query($sql_t); */
 
 
 ?>
@@ -17,82 +21,97 @@ $Tip_prod_res=$conectarse->query($sql_t);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <link rel="icon" href="../images/F.png">
+    <link rel="icon" href="../Imagenes/F.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
     <link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="../css/animate.css">
+
+    <script src="js/Estilojs.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
     
     <link rel="stylesheet" href="../css/owl.carousel.min.css">
     <link rel="stylesheet" href="../css/owl.theme.default.min.css">
     <link rel="stylesheet" href="../css/magnific-popup.css">
 
     <link rel="stylesheet" href="../css/aos.css">
-    <link href="css/responsive-color.css" rel="stylesheet">
+    <link href="../css/responsive-color.css" rel="stylesheet">
 
     <link rel="stylesheet" href="../css/ionicons.min.css">
-    
+    <link rel="stylesheet" href="../css/sstyle.css">
     <link rel="stylesheet" href="../css/flaticon.css">
     <link rel="stylesheet" href="../css/icomoon.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../Estilo.css">
-    <!-- <link rel="stylesheet" href="css/animateda.css"> -->
+    <link rel="stylesheet" href="../css/animateda.css">
   </head>
   
   <body>
-    <header class="header">
-      <div class="wrapper">
+    
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar" data-aos="fade-down" data-aos-delay="500">
+      <div class="container" style=" margin-left: 7%">
+        <a class="navbar-brand" href="Inicio.html"><img style="width: 50%;" src="../Imagenes/Logo.png"></a>
+      </div>
       <div class="container">
-        <a class="navbar-brand" href="index.html"><img style="width: 50%;" src="../images/Logo.png"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="oi oi-menu"></span> Menú
         </button>
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item" ><a href="contacto.php" class="nav-link">Contáctenos</a></li>
-            <li class="nav-item"><a href="index.html" class="nav-link"><strong style="color: green;"> Productos </strong></a></li>
+            <li class="nav-item"><a href="contacto.php" class="nav-link">Contáctenos</a></li>
+            <li class="nav-item"><a href="index.php" class="nav-link"><strong style="color: green;"> Productos </strong></a></li>
+            <li class="nav-item"><a href="Promociones.php" class="nav-link">Promociones</a></li>
           </ul>
           <!-- Search Form Area Start -->
           <?php
-          if (!isset($_SESSION['Cliente']||!isset($_SESSION['Empleado'])) {
+          if (isset($_SESSION['Cliente'])||isset($_SESSION['Empleado'])) {
             
-            echo'
-            <div class="login-register-btn" >
-                                    <a href="php/IniciarSesion.php"><font style="vertical-align: inherit; font-size: 15px;"><font style="vertical-align: inherit;">Iniciar Sesion</font></font></a><br>
-                                    <a href="php/Registro.php"><font style="vertical-align: inherit; font-size: 12px;"><font style="vertical-align: inherit;">Registrarse</font></font></a>
+            echo '
+              <div class="login-register-btn">
+                                   <li class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="profile-ava">
+                                <img class="user" src="../Imagenes/user.png" alt="Ver info" title="User" style="width: 20%; margin-top: 1%; margin-right: 1% ">
+                            </span>
+                            <span class="username"></span>
+                            <b class="caret"></b>
+                        </a>
+            <ul class="dropdown-menu extended logout">
+              <div class="log-arrow-up"></div>
+              <li class="eborder-top">
+                <a href="#"><i class="icon_profile"></i> Mi Perfil</a>
+              </li>
+              <li>
+                <a href="frmActualizarUsu.php"><i class="icon_key_alt"></i> Actualizar Datos</a>
+              </li>
+              <li>
+                <a href="CerrarSesion.php"><i class="icon_key_alt"></i> Cerrar Sesion</a>
+              </li>
+            </ul>
+          </li>
+                               </div>';}else if (!isset($_SESSION['Cliente'])|| !isset($_SESSION['Empleado'])) {
+                                 echo '
+                                 <div class="login-register-btn" >
+                                    <a href="IniciarSesion.php"><font style="vertical-align: inherit; font-size: 15px;"><font style="vertical-align: inherit;">Iniciar Sesion</font></font></a><br>
+                                    <a href="Registro.php"><font style="vertical-align: inherit; font-size: 12px;"><font style="vertical-align: inherit;">Registrarse</font></font></a>
                                 </div>
-            ';
-          }
-          ?>
-                               
-                    
+                                 ';
+                               }
+                      ?>                                             
         </div>
       </div>
-    </nav></div></header>
+    </nav>
     <!-- END nav -->
 
-   <!--  <section class="ftco-cover" style="background-image: url(images/Comida.jpeg);" id="section-home" data-aos="fade"  data-stellar-background-ratio="0.5">
-      <div class="container">
-        <div class="row align-items-center ftco-vh-100">
-          <div class="col-md-7">
-            <h1 class="ftco-heading mb-3" data-aos="fade-up" data-aos-delay="500">Productos</h1>
-            <h2 class="h5 ftco-subheading mb-5" data-aos="fade-up"  data-aos-delay="600"></h2>
-          </div>
-        </div>
-      </div>
-    </section> -->
     <section class="contenido wrapper">
-      <div class="slider">
-         <ul>
-           <li><a href="#"><img src="../Imagenes/slider.jpg" alt=""></a></li>
-           <li><a href="#"><img src="../Imagenes/slider1.jpg" alt=""></a></li>
-           <li><a href="#"><img src="../Imagenes/slider2.jpg" alt=""></a></li>
-           <li><a href="#"><img src="../Imagenes/slider3.jpg" alt=""></a></li><li>
-           <li><a href="#"><img src="../Imagenes/slider.jpg" alt=""></a></li>
-         </ul>
-       </div>
-     </section>
+   <div class="slider">
+      <ul>
+        <li><a href="#"><img src="../Imagenes/slider.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../Imagenes/slider1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../Imagenes/slider2.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../Imagenes/slider3.jpg" alt=""></a></li><li>
+        <li><a href="#"><img src="../Imagenes/slider.jpg" alt=""></a></li>
+      </ul>
+    </div>
+  </section>
     <!-- END section -->
 
 <section class="mosh-team-area section_padding_100">
@@ -108,101 +127,24 @@ $Tip_prod_res=$conectarse->query($sql_t);
                 <div class="col-12">
                     <div class="mosh-team-slides owl-carousel">
                         <!-- Single Team Slide -->
-<?php
-while ($tp_prod=$Tip_prod_res->fetch_array()) {
-      $sql_p="select * from producto where Tip_prod='$tp_prod->Id_tip_prod' and Est_prod='1'";
-    $img_prod_res=$conectarse->query($sql_p);
-  while ($img_prod=$img_prod_res->fetch_object()) {
-    
-  }
-  echo '<div class="single-team-slide text-center">
-  <!-- Thumbnail -->
-  <div class="single-team-slide team-thumbnail">
-      <img src="../images/Vinos y Licores.jpg" alt="">//como colocar la img???-------------
-  </div>
-  <!-- Meta Info -->
-  <div class="team-meta-info">
-      <h4 value=" ' . $tp_prod->Id_tip_prod . '">' . $tp_prod->Nam_tip_prod . '</h4>
-  </div>
-  <!-- Social Info -->
-  </div>';
-}
-?>
-                        <div class="single-team-slide text-center">
-                            <!-- Thumbnail -->
-                            <div class="single-team-slide team-thumbnail">
-                                <img src="../images/Vinos y Licores.jpg" alt="">
-                            </div>
-                            <!-- Meta Info -->
-                            <div class="team-meta-info">
-                                <h4>Vinos y Licores</h4>
-                            </div>
-                            <!-- Social Info -->
-                        </div>
+                        <?php 
+                    while ($tp_prod=$Tip_prod_res->fetch_object()) {
+                      
+                      echo '<div class="single-team-slide text-center">
+                      <!-- Thumbnail -->
+                      <div class="single-team-slide team-thumbnail">
+                          <img src="data:image/jpg||png;base64,' . base64_encode($tp_prod->img_prod) . '" alt="">
+                      </div>
+                      <!-- Meta Info -->
+                      <div class="team-meta-info">
+                          <h4 onclick="muestra();" value=" Tip_' . $tp_prod->Id_tip_prod . '">' . $tp_prod->Nam_tip_prod . '</h4>
+                      </div>
+                      <!-- Social Info -->
+                      </div>' ; 
+                    } 
 
-
-                        <!-- Single Team Slide -->
-                        <div class="single-team-slide text-center">
-                            <!-- Thumbnail -->
-                            <div class="team-thumbnail">
-                                <img src="../images/descarga.jpg" alt="">
-                            </div>
-                            <!-- Meta Info -->
-                            <div class="team-meta-info">
-                                <h4>Embutidos</h4>
-                            </div>
-                            <!-- Social Info -->
-                        </div>
-                        <!-- Single Team Slide -->
-                        <div class=" text-center">
-                            <!-- Thumbnail -->
-                            <div class="team-thumbnail">
-                                <img src="../images/Snacks.jpg" alt="">
-                            </div>
-                            <!-- Meta Info -->
-                            <div class="team-meta-info">
-                                <h4>Snacks</h4>
-                            </div>
-                            <!-- Social Info -->
-                        </div>
+                    ?>
                         
-                        <!-- Single Team Slide -->
-                        <div class=" text-center">
-                            <!-- Thumbnail -->
-                            <div class="single-team-slide team-thumbnail">
-                                <img src="../images/Panadería y Repostería.jpg" alt="">
-                            </div>
-                            <!-- Meta Info -->
-                            <div class="team-meta-info">
-                                <h4>Panderia & Reposteria</h4>
-                                <p></p>
-                            </div>
-                            <!-- Social Info -->
-                        </div>
-                        <div class=" text-center">
-                            <!-- Thumbnail -->
-                            <div class="single-team-slide team-thumbnail">
-                                <img src="../images/Aseo.jpg" alt="">
-                            </div>
-                            <!-- Meta Info -->
-                            <div class="single-team-slide team-meta-info">
-                                <h4>Aseo</h4>
-                                <p></p>
-                            </div>
-                            <!-- Social Info -->
-                        </div>
-                        <div class="single-team-slide text-center">
-                            <!-- Thumbnail -->
-                            <div class="team-thumbnail">
-                                <img src="../images/Aceite y Mantequilla.jpg" alt="">
-                            </div>
-                            <!-- Meta Info -->
-                            <div class="team-meta-info">
-                                <h4>Aceite y Mantequilla</h4>
-                                <p></p>
-                            </div>
-                            <!-- Social Info -->
-                        </div>
                     </div>
                 </div>
             </div>
@@ -218,73 +160,33 @@ while ($tp_prod=$Tip_prod_res->fetch_array()) {
         </div>
       </div>
 
+                    <div class="search-form-area animated">
+                        <form action="#" method="post">
+                            <input type="search" name="search" id="search" placeholder="¿Que Buscas?">
+                            <button type="submit" class="d-none"><img src="img/core-img/search-icon.png" alt="Buscar"></button>
+                        </form>
+                    </div>
+                <!-- Search btn -->
+                  <br>
 <div class="row">
-        <div class="col-md-6 col-lg-4" data-aos="fade-up">
-          <a href="Producto.html" class="block-5" style="background-image: url('../images/Pan_Bimbo.jpg');">
+<?php
+while ($prod_todo=$res_Prod->fetch_object()) {
+echo '
+<div class="col-md-6 col-lg-4" data-aos="fade-up">
+          <a href="descProd.php?idProd=' . $prod_todo->Id_prod . '" class="block-5" style="background-image: url(\'data:image/jpg||png;base64,' . base64_encode($prod_todo->img_prod) . '\'); ">
             <div class="text">
               <div class="subheading"></div>
-              <h3 class="heading">Pan Bimbo blanco 600g $2.100</h3>
+              <h3 class="heading">' . $prod_todo->Nam_prod . ' - ' . $prod_todo->Tam_prod . '- $ ' . $prod_todo->Val_prod . ' </h3>
+              
               <div class="post-meta">
                 <span>Buscamos darte lo mejor</span>
               </div>
             </div>
           </a>
         </div>
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-          <a href="Producto.html" class="block-5" style="background-image: url('../images/MegalitroA.jpg');">
-            <div class="text">
-              <div class="subheading"></div>
-              <h3 class="heading">Leche alqueria Entera (Megalitro) $2.500</h3>
-              <div class="post-meta">
-                <span>La mejor calidad al mejor precio</span>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-          <a href="Producto.html" class="block-5" style="background-image: url('../images/Pan_BimboIntegral.jpg');">
-            <div class="text">
-              <div class="subheading"></div>
-              <h3 class="heading">Pan bimbo integral 650g $3.100</h3>
-              <div class="post-meta">
-                <span>Todo lo que buscas en un solo lugar</span>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-6 col-lg-4" data-aos="fade-up">
-          <a href="Producto.html" class="block-5" style="background-image: url('../images/bg.jpg');">
-            <div class="text">
-              <div class="subheading"></div>
-              <h3 class="heading">Tienda D1</h3>
-              <div class="post-meta">
-                <span>Super barato</span>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-6 col-lg-4" data-aos="fade-up">
-          <a href="Producto.html" class="block-5" style="background-image: url('../images/Merca.jpeg');">
-            <div class="text">
-              <div class="subheading"></div>
-              <h3 class="heading">Tienda El amigo</h3>
-              <div class="post-meta">
-                <span>Compra ya!!!</span>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-6 col-lg-4" data-aos="fade-up">
-          <a href="Producto.html" class="block-5" style="background-image: url('../images/Tiendita.jpg');">
-            <div class="text">
-              <div class="subheading"></div>
-              <h3 class="heading">Tienda El paisa</h3>
-              <div class="post-meta">
-                <span>Todo lo que buscas aqui</span>
-              </div>
-            </div>
-          </a>
-        </div>
+';
+}
+?>
       </div>
 
 
@@ -292,14 +194,14 @@ while ($tp_prod=$Tip_prod_res->fetch_array()) {
   </div>
 
   <!-- ***** CTA Area Start ***** -->
-    <section class="mosh-call-to-action-area bg-img bg-overlays section_padding_100" style="background-image: url(../images/Foto.jpg);">
+    <section class="mosh-call-to-action-area bg-img bg-overlays section_padding_100" style="background-image: url(../Imagenes/Foto.jpg);">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="cta-content text-center fadeIn" data-wow-delay="0.5s">
                         <div class="section-heading">
                                  <h2>¿Alguna duda?</h2>
-                            <button type="submit" class="mosh-btn original-btn">Contactanos</button>
+                            <button type="submit" class="mosh-btn original-btn"><a href="contacto.php">Contactanos</a></button>
                         </div>
                     </div>
                 </div>
@@ -316,10 +218,10 @@ while ($tp_prod=$Tip_prod_res->fetch_array()) {
           <div class="row">
             <div class="col-md">
               <div class="ftco-footer-widget mb-4">
-                <h2 class="ftco-heading-2">Acerca de Coortiendas</h2>
+                <h2 class="ftco-heading-2">Acerca de CHANGING WORLD</h2>
                 <ul class="list-unstyled">
-                  <li><a href="Sobre.html" class="py-2 d-block">¿Quiénes somos?</a></li>
-                  <li><a href="contacto.html" class="py-2 d-block">Contactenos</a></li>
+                  <li><a href="Sobre.php" class="py-2 d-block">¿Quiénes somos?</a></li>
+                  <li><a href="contacto.php" class="py-2 d-block">Contactenos</a></li>
                 </ul>
               </div>
             </div>
@@ -360,7 +262,7 @@ while ($tp_prod=$Tip_prod_res->fetch_array()) {
   <script type="text/javascript" src="jquery.immersive-slider.js"></script>
 
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  <script src="js/jquery.immersive-slider.js"></script>
+  <script src="../js/jquery.immersive-slider.js"></script>
 
 
     <!-- ***** Footer Area End ***** -->
