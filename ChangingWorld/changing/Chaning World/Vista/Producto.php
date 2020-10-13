@@ -24,28 +24,84 @@
 </head>
 
 <body>
-    <!-- ##### Header Area Start ##### -->
-        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar" data-aos="fade-down" data-aos-delay="500">
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar" data-aos="fade-down" data-aos-delay="500">
+      <div class="container" style=" margin-left: 7%">
+        <a class="navbar-brand" href="index.php"><img style="width: 50%;" src="../Imagenes/Logo.png"></a>
+      </div>
       <div class="container">
-        <a class="navbar-brand" href="index.html"><img style="width: 100%;" src="../Imagenes/Logo.png"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="oi oi-menu"></span> Menú
         </button>
-        <div class="collapse navbar-collapse" id="ftco-nav" style="margin-left:  90px; ">
+        <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item" ><a href="contacto.php" class="nav-link">Contáctenos</a></li>
-            <li class="nav-item"><a href="index.php" class="nav-link"> Productos </a></li>
-            <li class="nav-item"><a href="Promociones.php." class="nav-link"> Productos </a></li>
+            <li class="nav-item"><a href="contacto.php" class="nav-link">Contáctenos</a></li>
+            <li class="nav-item"><a href="index.php" class="nav-link"><strong style="color: green;"> Productos </strong></a></li>
+            <li class="nav-item"><a href="Promociones.php" class="nav-link">Promociones</a></li>
           </ul>
-          <!-- Search Form Area Start -->
-        <div class="login-register-btn" >
-            <li class="dropdown">
-              <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                 <span class="profile-ava">
-                  <img class="user" src="../Imagenes/user.png" alt="Ver info" title="User" style="width: 10%;">
-                  </span>
-                  <span class="username"></span>
-                    <b class="caret"></b></a>
+        <!-- ALMACENISTA-3 -->  
+          
+          <?php
+          /* if (isset($_SESSION['Empleado']) ) {
+              echo '<input type="checkbox" id="abrir-cerrar" name="abrir-cerrar" value="">
+              <label for="abrir-cerrar">&#9776;
+                <span class="abrir">Menu</span>
+                <span class="cerrar">Cerrar</span> 
+                
+                    
+                  </ul>
+                </li></div>
+                
+              </label>
+      
+              <div id="sidebar" class="sidebar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light.scrolled.awake ftco-navbar-light.scrolled "
+              <div class="login-register-btn" style="  margin-top: 0%;" >
+                              <li class="dropdown">
+                                  <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                  <span class="profile-ava"><i class="icon_profile"></i> Mi Perfil
+                                      <img class="user" src="../Imagenes/user.png" alt="Ver info" title="User" style="width:18%; margin-top: 1%; margin-right: 2% ">
+                                  </span>
+                                  <span class="username"></span>
+                                  <b class="caret"></b>
+                              </a>
+                  <ul class="dropdown-menu extended logout">
+                    <div class="log-arrow-up"></div>
+                <ul class="menu">
+                  <li><strong><a href="indexempleados.php">Lista Productos</a></strong></li>
+                  ';
+                  if ( $_SESSION['Cargo']=='3' ) {
+                    echo '
+                  <li><a href="frmNewProducto.php">Ingresar producto</a></li>';}elseif ($_SESSION['Cargo']=='4') {
+                    echo '
+                  <li><a href="ListaSolicitud.php">Solicitudes ade empleados</a></li>';
+                  }
+                  echo'
+                    <li>
+                      <a href="frmActualizarUsu.php"><i class="icon_key_alt"></i> Actualizar Datos Personales</a>
+                    </li>
+                    <li>
+                      <a href="CerrarSesion.php"><i class="icon_key_alt"></i> Cerrar Sesion</a>
+                    </li>
+                  
+              </div>
+                
+                  </ul>
+              </div> <br><br>';
+
+
+          }
+ */
+          if (isset($_SESSION['Cliente']) || isset($_SESSION['Empleado'])) {
+            
+            echo '
+              <div class="login-register-btn">
+                                   <li class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="profile-ava">
+                                <img class="user" src="../Imagenes/user.png" alt="Ver info" title="User" style="width: 20%; margin-top: 1%; margin-right: 1% ">
+                            </span>
+                            <span class="username"></span>
+                            <b class="caret"></b>
+                        </a>
             <ul class="dropdown-menu extended logout">
               <div class="log-arrow-up"></div>
               <li class="eborder-top">
@@ -55,11 +111,20 @@
                 <a href="frmActualizarUsu.php"><i class="icon_key_alt"></i> Actualizar Datos</a>
               </li>
               <li>
-                <a href="CerrarSesion.php"><i class="icon_key_alt"></i> Cerrar Sesion</a>
+                <a href="../Modelo/CerrarSesion.php"><i class="icon_key_alt"></i> Cerrar Sesion</a>
               </li>
-            </ul>
-          </li>
-                               </div>
+              ';
+                  if ( isset($_SESSION['Empleado']) && $_SESSION['Cargo']=='3' ) {
+                    echo '
+                  <li><a href="frmNewProducto.php">Ingresar producto</a></li>';}elseif (isset($_SESSION['Empleado']) && $_SESSION['Cargo']=='4') {
+                    echo '
+                  <li><a href="ListaSolicitud.php">Solicitudes ade empleados</a></li>';
+                  } echo'
+                  </ul>
+                </li>
+                                     </div>';}?>
+    <!-- ##### Header Area Start ##### -->
+     
       </div>
                     
         </div>

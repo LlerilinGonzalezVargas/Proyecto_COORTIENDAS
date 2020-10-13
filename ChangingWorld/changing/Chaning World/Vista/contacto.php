@@ -18,13 +18,13 @@
     
      <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar" data-aos="fade-down" data-aos-delay="500">
       <div class="container">
-        <a class="navbar-brand" href="index.html"><img style="width: 100%;" src="../Imagenes/Logo.png"></a>
+        <a class="navbar-brand" href="index.php"><img style="width: 100%;" src="../Imagenes/Logo.png"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="oi oi-menu"></span> Menú
         </button>
         <div class="collapse navbar-collapse" id="ftco-nav" style="margin-left: 40%; margin-top: 2%">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item"><a href="contacto.html" class="nav-link"><strong style="color: green;">Contáctenos</strong></a></li>
+            <li class="nav-item"><a href="contacto.php" class="nav-link"><strong style="color: green;">Contáctenos</strong></a></li>
             <li class="nav-item"><a href="index.php" class="nav-link">Productos</a></li>
             <li class="nav-item"><a href="Promociones.php" class="nav-link">Promociones</a></li>
           </ul>
@@ -41,7 +41,7 @@
             <ul class="dropdown-menu extended logout">
               <div class="log-arrow-up"></div>
               <li class="eborder-top">
-                <a href="#"><i class="icon_profile"></i> Mi Perfil</a>
+                <a href="index.php"><i class="icon_profile"></i> Mi Perfil</a>
               </li>
               <li>
                 <a href="frmActualizarUsu.php"><i class="icon_key_alt"></i> Actualizar Datos</a>

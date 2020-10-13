@@ -3,9 +3,10 @@ require "../Modelo/ConexionDataBase.php";
 require "../Modelo/Producto.php";
 require "../Modelo/TipProd.php";
 require "../Modelo/Solicitud_empleado.php";
-/* if (!isset($_SESSION['Cargo']) && $_SESSION['Cargo']!='4' ) {//administrador
-header ('index.php');
-} */
+ if (!isset($_SESSION['Cargo']) || $_SESSION['Cargo']!='4' ) {//administrador
+header('index.php');
+
+} 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,7 +43,7 @@ header ('index.php');
           
         </label>
 
-        <div id="sidebar" class="sidebar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light.scrolled.awake ftco-navbar-light.scrolled "
+        <div id="sidebar" class="sidebar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light.scrolled.awake ftco-navbar-light.scrolled ">
         <div class="login-register-btn" style="  margin-top: 0%;" >
                         <li class="dropdown">
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -53,10 +54,18 @@ header ('index.php');
                             <b class="caret"></b>
                         </a>
             <ul class="dropdown-menu extended logout">
-              <div class="log-arrow-up"></div>>
+              <div class="log-arrow-up"></div>
           <ul class="menu">
-            <li><strong><a href="index.php">Lista Productos</a></strong></li><br>
-            <li><a href="frmNewProducto.php">Ingresar producto</a></li>
+            
+            <br>
+            <?php
+             if ( isset($_SESSION['Empleado']) && $_SESSION['Cargo']=='3' ) {
+              echo '
+            <li><a href="frmNewProducto.php">Ingresar producto</a></li>';}elseif (isset($_SESSION['Empleado']) && $_SESSION['Cargo']=='4') {
+              echo '
+            <li><a href="ListaSolicitud.php">Solicitudes ade empleados</a></li>';
+            }
+            ?>
               <li>
                 <a href="frmActualizarUsu.php"><i class="icon_key_alt"></i> Actualizar Datos Personales</a>
               </li>
@@ -69,9 +78,25 @@ header ('index.php');
             </ul>
         </div> <br><br>
 
-    <div class="containerr">
-      <div class="rower">
+    <div class="containerr" style=".product {
+    margin-top: 0%;
+    margin-left: 0%;
+    margin-right: 0%;
+  
+    height: 100%;
+    display: flex;
+    width: 100%;
+    color: #1a2537;
+    font-size: 20px;
+    text-align: center;
+    
+}">
+      <div class="rower" style="
+    width: 120%;
+    /* margin-right: 0; */
+    margin-left: -10%;">
         <div class="">
+        <h1>Solicitudes Activas</h1><br>
             <br><br><br>
             <div class="search-form-area animated" style="margin-left: 10%">
                         <form action="#" method="post">
@@ -81,38 +106,47 @@ header ('index.php');
                     </div>
             <div class="form-group">
             <div class="product">
-              <table width="89%" border="0" align="center">
-                <tr> <h1>Solicitudes Activas</h1> </tr>
-  <tr align="center" bgcolor="#FFFF99">
+            
+              <table width="100%" border="1" align="center"style="
+    width: 110%;
+    margin-left: 3%;
+    /* height: 10%; */
+    color: #0d7d07;
+    font-size: 20px;
+">
+                
+  <tr style="
+    color: black;
+">
  
-    <td width="11%">Identificación</td>
-    <td width="16%">Estado</td>
-    <td width="16%">Cargo</td>
-    <td width="16%">CC</td>
-    <td width="12%">Descripción</td>
-    <td width="19%">Nombres</td>
-    <td width="19%">Email</td>
-    <td width="19%">Realizada el:</td>
-    <td width="19%">Aceptar</td>
-    <td width="19%">Denegar</td>
+      <td>Identificación</td>
+      <td>Estado</td>
+      <td>Cargo</td>
+      <td>CC</td>
+      <td>Descripción</td>
+      <td>Nombres</td>
+      <td>Email</td>
+      <td>Realizada el:</td>
+      <td>Aceptar</td>
+      <td>Denegar</td>
   
   </tr> 
   <?php
   $obj_solic= new Solicitud_empleado();
   $res=$obj_solic->Consultar_Soles_emp('3');
   while ($solic =$res->fetch_object()) {
-    echo ' <tr align="center" bgcolor="#FFFF99">
+    echo ' <tr >
  
-  <td width="11%">' . $solic->Id_sol_emp . '</td>
-  <td width="16%">' . $solic->nam_est_sol . '</td>
-  <td width="16%">' . $solic->nam_tip_usu . '</td>
-  <td width="16%">' . $solic->doc_usu . '</td>
-  <td width="12%">' . $solic->Sol_emp . '</td>
-  <td width="19%">' . $solic->Nombre . '</td>
-  <td width="19%">' . $solic->Email_sol . '</td>
-  <td width="19%">' . $solic->Fecha_sol . '</td>
-  <td width="19%"><a href="../Modelo/validacion/ValidacionSolic.php ?idSol=' . $solic->Id_sol_emp . '&cc=' . $solic->doc_usu . '&accion=si">Aceptar</a></td>
-  <td width="19%"><a href="../Modelo/validacion/ValidacionSolic.php ?idSol=' . $solic->Id_sol_emp . '&cc=' . $solic->doc_usu . '&accion=no">Denegar</a></td>
+  <td>' . $solic->Id_sol_emp . '</td>
+  <td>' . $solic->nam_est_sol . '</td>
+  <td>' . $solic->nam_tip_usu . '</td>
+  <td>' . $solic->doc_usu . '</td>
+  <td>' . $solic->Sol_emp . '</td>
+  <td>' . $solic->Nombre . '</td>
+  <td>' . $solic->Email_sol . '</td>
+  <td>' . $solic->Fecha_sol . '</td>
+  <td><a href="../Modelo/validacion/ValidacionSolic.php?idSol=' . $solic->Id_sol_emp . '&cc=' . $solic->doc_usu . '&accion=si">Aceptar</a></td>
+  <td width="19%"><a href="../Modelo/validacion/ValidacionSolic.php?idSol=' . $solic->Id_sol_emp . '&cc=' . $solic->doc_usu . '&accion=no">Denegar</a></td>
 
 </tr> ';}
   ?>

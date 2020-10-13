@@ -7,7 +7,7 @@ require "../EstadoProd.php";
   
   
 
-if (isset($_REQUEST['Enviar'])) {
+if (isset($_REQUEST["Continuar"])) {
    session_start();
    extract ($_REQUEST);
 $objProd= new Producto();
@@ -31,7 +31,7 @@ $Conexion=Conectarse();
       
       if (!((strpos($tipo, "gif") || strpos($tipo, "jpeg") || strpos($tipo, "jpg") || strpos($tipo, "png"))) && ($tamano > 2000000)) {
          echo "<script type='text/javascript'>alert('Error. La extensión o el tamaño de los archivos no es correcta, se permiten archivos .gif, .jpg, .png. y de 200 kb como máximo.Intente nuevamente, gracias.');
-              /* window.location='../../Vista/frmNewProducto. php'; */ 
+               window.location='../../Vista/frmNewProducto. php';  
               </script>";
       
       }else {
@@ -59,7 +59,7 @@ $Conexion=Conectarse();
           /*  */ 
          $objProd->Agregar_Producto();
          echo "<script type='text/javascript'>alert('Se ha ingresado el dato correctamente, buen día.');
-              /* window.location='../../Vista/frmNewProducto.php';  */
+               window.location='../../Vista/frmNewProducto.php';  
               </script>";
              /* chmod('images/'.$archivo, 0777);
              echo '<div><b>Se ha subido correctamente la imagen.</b></div>';
@@ -68,7 +68,7 @@ $Conexion=Conectarse();
       }else {
             
             echo "<script type='text/javascript'>alert('Ocurrió algún error al subir el archivo. No pudo guardarse.');
-            /* window.location='../../Vista/frmNewProducto.php';  */
+          window.location='../../Vista/frmNewProducto.php';  
             </script>";
          }
       }

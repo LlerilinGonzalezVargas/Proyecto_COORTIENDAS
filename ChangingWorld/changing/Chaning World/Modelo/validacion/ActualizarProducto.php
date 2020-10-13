@@ -32,7 +32,7 @@ $Conexion=Conectarse();
       
       if (!((strpos($tipo, "gif") || strpos($tipo, "jpeg") || strpos($tipo, "jpg") || strpos($tipo, "png"))) && ($tamano > 2000000)) {
          echo "<script type='text/javascript'>alert('Error. La extensión o el tamaño de los archivos no es correcta, se permiten archivos .gif, .jpg, .png. y de 200 kb como máximo.Intente nuevamente, gracias.');
-              /* window.location='../../Vista/frmNewProducto.php?idProd=' . $_REQUEST['Id_prod_2'] . ''; */ 
+              window.location='../../Vista/frmNewProducto.php?idProd=' . $_REQUEST[Id_prod_2] . ''; 
               </script>";
       
       }else {
@@ -58,7 +58,7 @@ $Conexion=Conectarse();
          $objProd->Actualizar_Producto($_REQUEST['Id_prod_2']);
 
          echo "<script type='text/javascript'>alert('Se ha actualizado el dato correctamente, buen día.');
-              /* window.location='../../Vista/index.php';  */
+               window.location='../../Vista/index.php';  
               </script>";
              /* chmod('images/'.$archivo, 0777);
              echo '<div><b>Se ha subido correctamente la imagen.</b></div>';
@@ -67,7 +67,7 @@ $Conexion=Conectarse();
       }else {
             
             echo "<script type='text/javascript'>alert('Ocurrió algún error al subir el archivo. No pudo guardarse.');
-            /* window.location='../../Vista/frmNewProducto.php?idProd=' . $_REQUEST['Id_prod_2'] . ''; */ 
+             window.location='../../Vista/frmNewProducto.php?idProd=' . $_REQUEST[Id_prod_2] . ''; 
             </script>";
          }
       }

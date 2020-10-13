@@ -1,3 +1,12 @@
+<?php
+require "../Modelo/ConexionDataBase.php";
+require "../Modelo/Producto.php";
+require "../Modelo/TipProd.php";
+require "../Modelo/Solicitud_empleado.php";
+/* if (!isset($_SESSION['Cargo']) && $_SESSION['Cargo']!='4' ) {//administrador
+header ('index.php');
+} */
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -22,10 +31,10 @@
       </ul>
     </nav>
 
-       <!--   --><input type="checkbox" id="abrir-cerrar" name="abrir-cerrar" value="">
+        <input type="checkbox" id="abrir-cerrar" name="abrir-cerrar" value="">
         <label for="abrir-cerrar">&#9776;
           <span class="abrir">Menu</span>
-          <span class="cerrar">Cerrar</span> 
+          <span class="cerrar">Cerrar</span>
           
               
             </ul>
@@ -44,22 +53,22 @@
                             <b class="caret"></b>
                         </a>
             <ul class="dropdown-menu extended logout">
-              <div class="log-arrow-up"></div>
+              <div class="log-arrow-up"></div>>
           <ul class="menu">
-            <li><strong><a href="indexempleados.php">Lista Productos</a></strong></li>
+            <li><strong><a href="index.php">Lista Productos</a></strong></li><br>
             <li><a href="frmNewProducto.php">Ingresar producto</a></li>
               <li>
                 <a href="frmActualizarUsu.php"><i class="icon_key_alt"></i> Actualizar Datos Personales</a>
               </li>
               <li>
-                <a href="CerrarSesion.php"><i class="icon_key_alt"></i> Cerrar Sesion</a>
+                <a href="../Modelo/CerrarSesion.php"><i class="icon_key_alt"></i> Cerrar Sesion</a>
               </li>
             
         </div>
           
             </ul>
         </div> <br><br>
- <!--  -->
+
     <div class="containerr">
       <div class="rower">
         <div class="">
@@ -72,63 +81,42 @@
                     </div>
             <div class="form-group">
             <div class="product">
-              <div class="product">
-                <a href="">
-                  <img src="../Imagenes/papass.jpg">
-                  <div class="product-2">
-                  <span>Papas</span><br><p>Super ricas de pollo familiar</p>
-                <button class="mosh-btn btn">Ver mas..</button><button class="mosh-btn btn">Editar Info</button>
-                </div>
-              </a>
-              </div>
-              <div class="product">
-                <a href="">
-                  <img src="../Imagenes/papass.jpg">
-                  <div class="product-2">
-                  <span>Papas</span><br><p>Super ricas de pollo familiar</p>
-                <button class="mosh-btn btn">Ver mas..</button><button class="mosh-btn btn">Editar Info</button>
-                </div>
-              </a>
-              </div>
-              <div class="product">
-                <a href="">
-                  <img src="../Imagenes/papass.jpg">
-                  <div class="product-2">
-                  <span>Papas</span><br><p>Super ricas de pollo familiar</p>
-                <button class="mosh-btn btn">Ver mas..</button><button class="mosh-btn btn">Editar Info</button>
-                </div>
-              </a>
-              </div>
-            </div>
-            <div class="product">
-              <div class="product">
-                <a href="">
-                  <img src="../Imagenes/papass.jpg">
-                  <div class="product-2">
-                  <span>Papas</span><br><p>Super ricas de pollo familiar</p>
-                <button class="mosh-btn btn">Ver mas..</button><button class="mosh-btn btn">Editar Info</button>
-                </div>
-              </a>
-              </div>
-              <div class="product">
-                <a href="">
-                  <img src="../Imagenes/papass.jpg">
-                  <div class="product-2">
-                  <span>Papas</span><br><p>Super ricas de pollo familiar</p>
-                <button class="mosh-btn btn">Ver mas..</button><button class="mosh-btn btn">Editar Info</button>
-                </div>
-              </a>
-              </div>
-              <div class="product">
-                <a href="">
-                  <img src="../Imagenes/papass.jpg">
-                  <div class="product-2">
-                  <span>Papas</span><br><p>Super ricas de pollo familiar</p>
-                <button class="mosh-btn btn">Ver mas..</button><button class="mosh-btn btn">Editar Info</button>
-                </div>
-              </a>
-              </div>
-            </div>
+              <table width="89%" border="0" align="center">
+                <tr> <h1>Solicitudes Activas</h1> </tr>
+  <tr align="center" bgcolor="#FFFF99">
+ 
+    <td width="11%">Identificación</td>
+    <td width="16%">Estado</td>
+    <td width="16%">Cargo</td>
+    <td width="16%">CC</td>
+    <td width="12%">Descripción</td>
+    <td width="19%">Nombres</td>
+    <td width="19%">Email</td>
+    <td width="19%">Realizada el:</td>
+    <td width="19%">Aceptar</td>
+    <td width="19%">Denegar</td>
+  
+  </tr> 
+  <?php
+  $obj_solic= new Solicitud_empleado();
+  $res=$obj_solic->Consultar_Soles_emp('3');
+  while ($solic =$res->fetch_object()) {
+    echo ' <tr align="center" bgcolor="#FFFF99">
+ 
+  <td width="11%">' . $solic->Id_sol_emp . '</td>
+  <td width="16%">' . $solic->nam_est_sol . '</td>
+  <td width="16%">' . $solic->nam_tip_usu . '</td>
+  <td width="16%">' . $solic->doc_usu . '</td>
+  <td width="12%">' . $solic->Sol_emp . '</td>
+  <td width="19%">' . $solic->Nombre . '</td>
+  <td width="19%">' . $solic->Email_sol . '</td>
+  <td width="19%">' . $solic->Fecha_sol . '</td>
+  <td width="19%"><a href="../Modelo/validacion/ValidacionSolic.php?idSol=' . $solic->Id_sol_emp . '&cc=' . $solic->doc_usu . '&accion=si">Aceptar</a></td>
+  <td width="19%"><a href="../Modelo/validacion/ValidacionSolic.php?idSol=' . $solic->Id_sol_emp . '&cc=' . $solic->doc_usu . '&accion=no">Denegar</a></td>
+
+</tr> ';}
+  ?>
+      </table>     </div>
           </div>
         </div>  
 

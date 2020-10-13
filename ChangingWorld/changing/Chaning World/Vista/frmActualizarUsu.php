@@ -8,20 +8,23 @@ session_start();
   require "../Modelo/TipUsu.php";
   require "../Modelo/TipoDoc.php";
   /* session_start(); */
-  if(!isset($_SESSION['Cliente']) ||!isset($_SESSION['Empleado']) )
+  
+  if(!isset($_SESSION['Cliente']) && !isset($_SESSION['Empleado']) )
   {
    
-    /* header('location: index.php'); */
-  }elseif (isset($_SESSION['Cliente'])) {
+    header('location: index.php'); 
+  }else if (isset($_SESSION['Cliente'])) {
     
     $objClie= new Cliente();
-   $res_clie= $objClie->ConsultarCliente($_SESSION['Cliente']);
-   
-
+   $res_clie=$objClie->Consultar_el_Cliente($_SESSION['Cliente']);
+   /* $sql_a="select Id_clie, Est_clie,name_est_usu, Nam_clie, email_clie, Pass_clie from est_usu,cliente where Id_clie='$_SESSION[Cliente]' and Est_clie='1' and (cliente.Est_clie=est_usu.Id_est_usu);";
+   $cone=Conectarse();
+   $res_cliente= $Cone->query($sql_a);
+ */
 
   }elseif (isset($_SESSION['Empleado'])) {
     $objemp= new Empleados();
-    $res_emp= $objemp->Consultar_Empleado($_SESSION['Empleado ']);
+    $res_emp= $objemp->Consultar_El_Empleado($_SESSION['Empleado']);
     $sql="select * from solic_emp where doc_usu='$_SESSION[Empleado]';";
     $conexion=Conectarse();
     $res_sol=$conexion->query($sql);
@@ -51,7 +54,7 @@ session_start();
 
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar" data-aos="fade-down" data-aos-delay="500">
       <div class="container">
-        <a class="navbar-brand" href="index.html"><img style="width: 50%;" src="../images/Logo.png"></a>  
+        <a class="navbar-brand" href="index.php"><img style="width: 50%;" src="../Imagenes/Logo.png"></a>  
         </div>
       </div>
     </nav>
@@ -80,15 +83,20 @@ session_start();
                             <b class="caret"></b>
                         </a>
             <ul class="dropdown-menu extended logout">
-              <div class="log-arrow-up"></div>>
+              <div class="log-arrow-up"></div>
           <ul class="menu">
-            <li><a href="indexempleados.php">Lista Productos</a></li>
-            <li><a href="frmNewProducto.php">Ingresar producto</a></li>
-              <li>
+            <li><a href="index.php">Lista Productos</a></li>
+            <?php
+            if (isset($_SESSION['Empleado']) && $_SESSION['Cargo']=='3') {
+              echo '<li><a href="frmNewProducto.php">Ingresar producto</a></li>
+              <li>';
+            }
+            ?>
+            
                 <strong><a href="frmActualizarUsu.php"><i class="icon_key_alt"></i> Actualizar Datos Personales</a></strong>
               </li>
               <li>
-                <a href="CerrarSesion.php"><i class="icon_key_alt"></i> Cerrar Sesion</a>
+                <a href="../Modelo/CerrarSesion.php"><i class="icon_key_alt"></i> Cerrar Sesion</a>
               </li>
             
         </div>
@@ -98,7 +106,7 @@ session_start();
     
      
 
-    <section class="ftco-cover" style="background-image: url(../images/Foto.jpg);" style="width: 10%; height: 10%;" id="section-home" data-aos="fade"  data-stellar-background-ratio="0.5">
+    <section class="ftco-cover" style="background-image: url(../Imagenes/Foto.jpg);" style="width: 10%; height: 10%;" id="section-home" data-aos="fade"  data-stellar-background-ratio="0.5">
       <div class="container">
         <div class="row align-items-center ftco-vh-75" >
           <div class="col-md-7">
@@ -118,14 +126,15 @@ session_start();
           <div class="col-md-9 col-md-9" >
                     <div class="contact-form">
                         <h5 style="text-align: center;">Actualizar Cuenta</h5>
-        <form action="../Modelo/validacion/ActualizarUsu.php" method="post" >
+        <form action="../Modelo/validacion/ActualizarUsu.php"    method="post" >
         <div class="" style="text-align: center;">
         <?php
         if (isset($_SESSION['Cliente'])) {
-          while ($clie=$res_clie->fetch_object()) {
+
+          while ( $clie=$res_clie->fetch_object()) {
             echo ' <div class="col-12 col-md-6">
             <div class="group">
-                <input type="text" name="Name" id="Name" value="' . $clie->Nam_clie. '" required>
+                <input type="text" name="Name" id="Name" value="' . $clie->Nam_clie . '" required>
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label>Nombre Completo</label>
@@ -133,7 +142,7 @@ session_start();
         </div>
           <div class="col-12 col-md-6">
             <div class="group">
-                <input type="email" name="email" id="email" value="' . $clie->email_clie. '" required>
+                <input type="email" name="email" id="email" value="' . $clie->email_clie . '" required>
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label>Email</label>
@@ -165,11 +174,11 @@ session_start();
         </div>
          ';
           }
-        }elseif (isset($_SESSION['Empleado'])) {
+        }else if (isset($_SESSION['Empleado'])) {
           while ($emp=$res_emp->fetch_object()) {
             echo ' <div class="col-12 col-md-6">
             <div class="group">
-                <input type="text" name="Name" id="Name" value="' . $emp->Nam_empl. '" required>
+                <input type="text" name="Name" id="Name" value="' . $emp->Nombre . '" required>
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label>Nombre Completo</label>
@@ -177,7 +186,7 @@ session_start();
         </div>
           <div class="col-12 col-md-6">
             <div class="group">
-                <input type="email" name="email" id="email" value="' . $emp->Email_empl. '" required>
+                <input type="email" name="email" id="email" value="' . $emp->Email_sol . '" required>
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label>Email</label>
@@ -186,14 +195,7 @@ session_start();
 
         
         echo'
-        <div class="col-12 col-md-6">
-            <div class="group">
-                <input type="file" name="img" id="img" value="' . $emp->img_eml. '"required>
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label>Imágen</label>
-            </div>
-        </div>
+        
         <div class="col-12 col-md-6">
             <div class="group">
                 <input type="password" name="Pass_1" id="Pass_1" required>
@@ -242,7 +244,7 @@ session_start();
                                  
                                   
                                 <div class="col-12">
-                                    <input  type="submit" class="mosh-btn original-btn" value="Continuar">
+                                    <input  type="submit" class="mosh-btn original-btn" value="Continuar" id="Continuar" name="Continuar">
                                 </div>
                                 
                         </form></div></div>

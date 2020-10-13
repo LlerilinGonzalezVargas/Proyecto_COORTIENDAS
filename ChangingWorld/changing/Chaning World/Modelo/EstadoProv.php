@@ -26,13 +26,26 @@ class EstadoProv{
  
   }
   public function Agregar_EstadoProv(){
-  
+   $this->Conexion=Conectarse();  
+  $sql="select * from tip_prod  where Id_tip_prod='$Id_tip_prod' ";
+  $resultado=$this->Conexion->query($sql);
+  $this->Conexion->close();
+  return $resultado;
   }
   Public function Actualizar_EstadoProv($Id_est_prov){
-  
+   $this->Conexion=Conectarse();  
+  $sql="select * from tip_prod;";
+  $resultado=$this->Conexion->query($sql);
+  $this->Conexion->close();
+  return $resultado;
   } 
   Public function Consultar_EstadoProv(){
-  
+  $this->Conexion=Conectarse();   
+  $sql="select * from producto,estad_prod,tip_prod where ((producto.Est_prod=estad_prod.Id_estad_prod) and (producto.Tip_prod=tip_prod.Id_tip_prod)) and (Est_prod='1' or Est_prod='4') GROUP BY Tip_prod;";
+  $resultado=$this->Conexion->query($sql);
+ 
+  $this->Conexion->close();
+  return $resultado;
   }
 }
 ?>

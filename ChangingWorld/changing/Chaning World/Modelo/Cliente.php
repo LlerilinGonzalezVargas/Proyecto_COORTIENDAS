@@ -50,14 +50,15 @@ public function Get_Pass_usu(){
   return $this->Pass_usu;
 }
 /*------------------- Metodos de consulta-------------------- */
-public function Crear_Cliente($Nam_clie,$email_clie,$Pass_clie){
+public function Crear_Cliente($Est_clie,$Nam_clie,$email_clie,$Pass_clie){
 
-
+  $this->Est_clie=$Est_clie;
 $this->Nam_clie=$Nam_clie;
 $this->email_clie=$email_clie;
 $this->Pass_clie=$Pass_clie;
 
 }
+
 public function Agregar_Cliente(){
   $this->Conexion=Conectarse();  
   $sql="insert into cliente (Est_clie,Nam_clie,email_clie,Pass_clie) 
@@ -68,7 +69,7 @@ public function Agregar_Cliente(){
 }
 Public function Actualizar_Cliente($Id_Clie){
   $this->Conexion=Conectarse();  
-  $sql="update citas set citFecha='$this->citFecha', citHora='$this->citHora',citPaciente='$this->citPaciente',  citMedico='$this->citMedico',  citConsultorio='$this->citConsultorio',  citEstado='$this->citEstado',  citObservaciones='$this->citObservaciones'  where (idCita='$idCita')";
+  $sql="update cliente set Nam_clie='$this->Nam_clie', email_clie='$this->email_clie',Pass_clie='$this->Pass_clie'  where (Id_clie='$Id_Clie')";
   $resultado=$this->Conexion->query($sql);
   $this->Conexion->close();
   return $resultado;
@@ -76,6 +77,14 @@ Public function Actualizar_Cliente($Id_Clie){
 Public function ConsultarCliente($Id_Clie){
   $this->Conexion=Conectarse();   
   $sql="select Id_clie, Est_clie,name_est_usu, Nam_clie, email_clie, Pass_clie from est_usu,cliente where Id_clie='$Id_Clie' Est_clie='1' and (cliente.Est_clie=est_usu.Id_est_usu);";
+  $resultado=$this->Conexion->query($sql);
+ 
+  $this->Conexion->close();
+  return $resultado;	
+}
+Public function Consultar_el_Cliente($Id_Clie){
+  $this->Conexion=Conectarse();   
+  $sql="select * from cliente where Id_clie='$Id_Clie' and Est_clie='1' ;";
   $resultado=$this->Conexion->query($sql);
  
   $this->Conexion->close();

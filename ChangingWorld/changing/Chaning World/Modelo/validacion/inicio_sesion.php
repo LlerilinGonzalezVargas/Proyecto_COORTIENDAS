@@ -2,6 +2,7 @@
 require "../ConexionDataBase.php";
 require "../TipUsu.php";
 require "../Cliente.php";
+require "../Empleados.php";
 /* require "../TipUsu.php"; */
 if (isset($_REQUEST['ini_sesion'])) {
   session_start();

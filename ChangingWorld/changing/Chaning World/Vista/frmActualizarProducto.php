@@ -6,14 +6,14 @@
   require "../Modelo/TipProd.php";
   require "../Modelo/Producto.php";
   session_start(); 
-   if(!isset($_SESSION['Cliente']) ||!isset($_SESSION['Empleado']) )
+   if(!isset($_SESSION['Cliente']) && !isset($_SESSION['Empleado']) )
   { 
    
     header('location: index.php'); 
   }elseif (isset($_SESSION['Cliente'])) {
     header('location: index.php');
 
-  }elseif ($_SESSION['Cargo']=='1') {//supervisor
+  }elseif ($_SESSION['Cargo']=='3') {//almacenista
     
     if (isset($_REQUEST['idProd'])) { 
       

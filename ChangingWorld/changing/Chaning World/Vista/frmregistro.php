@@ -39,11 +39,8 @@ $res_TipoDoc=$objTipoDoc->Consultar_TipoDoc();
     </div>
   </header>
   <?php
-  echo '<script type="text/javascript">var today = new Date();
-  var year = today.getFullYear();</script>';
-  $Fech_Sol='<script type="text/javascript">year;</script>';
-  echo $Fech_Sol;
-echo "lglg";
+ 
+
 
   ?>
 
@@ -145,7 +142,7 @@ echo "lglg";
     ?>
 <br>
 
-    <p>¿Ya tienes cuenta? <a class="link" href="login.php">Inicia sesion</a></p>
+    <p>¿Ya tienes cuenta? <a class="link" href="frmlogin.php">Inicia sesion</a></p>
   </div>
 
   <!-- <form action="index.php" method="POST" enctype="multipart/form-data"/>

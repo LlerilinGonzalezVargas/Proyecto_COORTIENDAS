@@ -130,8 +130,8 @@ TU.Id_tip_usu */
   return $resultado;	
 }
 Public function Consultar_Sol_emp($Id_sol_emp){
-  $this->Conexion=c ();   
-  $sql="select * from solic_emp  where Est_sol_emp='3' and Id_sol_emp='$Consultar_Sol_emp' ;";
+  $this->Conexion=Conectarse();   
+  $sql="select * from solic_emp  where Est_sol_emp='1' and Id_sol_emp='$Id_sol_emp' ;";
   $resultado=$this->Conexion->query($sql);
  
   $this->Conexion->close();

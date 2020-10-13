@@ -5,15 +5,15 @@
   require "../Modelo/Proveedor.php";
   require "../Modelo/TipProd.php";
  
-  /* session_start(); */
+  session_start();
   if(!isset($_SESSION['Cliente']) ||!isset($_SESSION['Empleado']) )
   {
   
-     header('location: index.php'); 
+    /*  header('location: index.php');  */
   }elseif (isset($_SESSION['Cliente'])) {
     header('location: index.php');
 
-  }elseif ($_SESSION['Cargo']=='1') {//supervisor
+  }elseif (isset($_SESSION['Empleado']) && $_SESSION['Cargo']=='3' ) {//supervisor
     $objemp= new Empleados();
     $res_emp= $objemp->Consultar_Empleado($_SESSION['Empleado ']);
     $sql="select * from producto ;";
@@ -29,7 +29,7 @@
   <head>
     <title>COORTIENDAS</title>
     <meta charset="utf-8">
-    <link rel="icon" href="../images\Faviconn.png">
+    <link rel="icon" href="../Imagenes/F.png">
     
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
     <!-- <link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css"> -->
@@ -45,7 +45,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar" data-aos="fade-down" data-aos-delay="500">
       <div class="container">
-        <a class="navbar-brand" href="index.html"><img style="width: 50%;" src="../images/Logo.png"></a>
+        <a class="navbar-brand" href="index.html"><img style="width: 50%;" src="../Imagenes/Logo.png"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
         
           <!-- Search Form Area Start -->
@@ -70,7 +70,7 @@
         <div id="sidebar" class="sidebar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light.scrolled.awake ftco-navbar-light.scrolled ">
         <div class="login-register-btn" style="  margin-top: 0%;" >
                         <li class="dropdown">
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="index.php">
                             <span class="profile-ava"><i class="icon_profile"></i> Mi Perfil
                                 <img class="user" src="../Imagenes/user.png" alt="Ver info" title="User" style="width:18%; margin-top: 1%; margin-right: 2% ">
                             </span>
@@ -80,7 +80,7 @@
             <ul class="dropdown-menu extended logout">
               <div class="log-arrow-up"></div>>
           <ul class="menu">
-            <li><a href="indexempleados.php">Lista Productos</a></li>
+            <li><a href="index.php">Lista Productos</a></li>
             <li><strong><a href="frmNewProducto.php">Ingresar producto</a></strong></li>
               <li>
                 <a href="frmActualizarUsu.php"><i class="icon_key_alt"></i> Actualizar Datos Personales</a>
@@ -96,7 +96,7 @@
     
      
 
-    <section class="ftco-cover" style="background-image: url(../images/Foto.jpg);" style="width: 10%; height: 10%;" id="section-home" data-aos="fade"  data-stellar-background-ratio="0.5">
+    <section class="ftco-cover" style="background-image: url(../Imagenes/Foto.jpg);" style="width: 10%; height: 10%;" id="section-home" data-aos="fade"  data-stellar-background-ratio="0.5">
       <div class="container">
         <div class="row align-items-center ftco-vh-75" >
           <div class="col-md-7">
@@ -116,13 +116,13 @@
           <div class="col-md-9 col-md-9" >
                     <div class="contact-form">
                         <h5 style="text-align: center;">Nuevo Producto</h5>
-        <form action="../Modelo/validacion/ActualizarUsu.php" method="post" >
+        <form action="../Modelo/validacion/NuevoProducto.php" method="post" enctype="multipart/form-data">
         <div class="" style="text-align: center;">
       
 
            <div class="col-12 col-md-6">
             <div class="group">
-                <input type="number" name="Name" id="Name"  required>
+                <input type="number" name="ID" id="ID"  required>
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label>Id Producto</label>
@@ -202,7 +202,7 @@
         </div>
         <div class="col-12 col-md-6">
             <div class="group">
-                <input type="number" name="presen" id="presen" required>
+                <input type="text" name="presen" id="presen" required>
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label>Presentación en unidades</label>
@@ -210,7 +210,7 @@
         </div>
         <div class="col-12 col-md-6">
             <div class="group">
-                <input type="number" name="iva" id="iva" required>
+                <input type="number" name="tam" id="tam" required>
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label>Tamaño </label>
@@ -249,7 +249,7 @@
                                  
                                   
                                 <div class="col-12">
-                                    <input  type="submit" class="mosh-btn original-btn" value="Continuar">
+                                    <input  type="submit" class="mosh-btn original-btn" value="Continuar" id="Continuar" name="Continuar">
                                 </div>
                                 
                         </form></div></div>
@@ -267,8 +267,8 @@
               <div class="ftco-footer-widget mb-4">
                 <h2 class="ftco-heading-2">Acerca de Coortiendas</h2>
                 <ul class="list-unstyled">
-                  <li><a href="Sobre.html" class="py-2 d-block">¿Quiénes somos?</a></li>
-                  <li><a href="#" class="py-2 d-block">Contactenos</a></li>
+                  <li><a href="Sobre.php" class="py-2 d-block">¿Quiénes somos?</a></li>
+                  <li><a href="contacto.php" class="py-2 d-block">Contactenos</a></li>
                 </ul>
               </div>
             </div>
