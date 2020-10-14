@@ -7,7 +7,7 @@ extract($_REQUEST);
 if (isset($_REQUEST['idSol']) && isset($_REQUEST['cc']) && isset($_REQUEST['accion'])) {
  $objEmpl= new Empleados();
   if ($_REQUEST['accion']=='si') {
-    echo " , " . $_REQUEST['idSol'] . " , " . $_REQUEST['cc'] . " , " . $_REQUEST['accion'];
+    /* echo " , " . $_REQUEST['idSol'] . " , " . $_REQUEST['cc'] . " , " . $_REQUEST['accion']; */
     $objSol= new Solicitud_empleado();
     $objSol->aceptar_o_negar_Sol_emp($_REQUEST['idSol'],'1');
     $res_sol=$objSol->Consultar_Sol_emp($_REQUEST['idSol']);
@@ -18,7 +18,7 @@ if (isset($_REQUEST['idSol']) && isset($_REQUEST['cc']) && isset($_REQUEST['acci
       $Pass_emp=$sol->Pass_sol;
       $Obser_emp=$sol->Sol_emp;
        $Solicitud_empleado_idSolicitud=$sol->Id_sol_emp;
-      echo " " . $Id_emp . $EstadoUsu_Id_est_usu . $Email_emp . $Pass_emp . $Obser_emp . $Solicitud_empleado_idSolicitud;
+      /* echo " " . $Id_emp . $EstadoUsu_Id_est_usu . $Email_emp . $Pass_emp . $Obser_emp . $Solicitud_empleado_idSolicitud; */
 
       $objEmpl->Crear_Empleado($Id_emp,$EstadoUsu_Id_est_usu,$Email_emp,$Pass_emp,$Obser_emp,$Solicitud_empleado_idSolicitud);
       $Conexion=Conectarse();
@@ -33,7 +33,7 @@ $resultado=$Conexion->query($sql);
       
     } 
    
-      echo "hola";
+      /* echo "hola"; */
     $objEmpl->Agregar_Empleado();
     echo "<script type='text/javascript'>alert('Se ha aceptado la solicitud.');
      window.location='../../Vista/ListaSolicitud.php'; 

@@ -13,7 +13,7 @@ if (isset($_REQUEST['Enviar'])) {
    if (!isset($_REQUEST['Id_prod_2'])) {
      
     echo "<script 
-    window.location='../../Vista/frnActualizarProducto. php';
+    window.location='../../Vista/frnActualizarProducto.php';
     </script>";
    }
    
@@ -51,7 +51,7 @@ $Conexion=Conectarse();
         $objProd->Crear_Producto($_REQUEST['Id_prod_2'],1,$_REQUEST['tipo_prod'],$_REQUEST['Provee'],$_REQUEST['name'],$_REQUEST['caracter'],0,$_REQUEST['valor'],$_REQUEST['iva'],$_REQUEST['presen'],$_REQUEST['tam'],$imgBin);
 
         
-           echo $_REQUEST['Id_prod_2'] . " , " . 1 . " , " . $_REQUEST['tipo_prod'] . " , " . $_REQUEST['Provee'] . " , " . $_REQUEST['name'] . " , " . $_REQUEST['caracter'] . " , " . 0 . " , " . $_REQUEST['valor'] . " , " . $_REQUEST['iva'] . " , " . $_REQUEST['presen'] . " , " . $_REQUEST['tam'] . " , " . $imgBin;
+          /*  echo $_REQUEST['Id_prod_2'] . " , " . 1 . " , " . $_REQUEST['tipo_prod'] . " , " . $_REQUEST['Provee'] . " , " . $_REQUEST['name'] . " , " . $_REQUEST['caracter'] . " , " . 0 . " , " . $_REQUEST['valor'] . " , " . $_REQUEST['iva'] . " , " . $_REQUEST['presen'] . " , " . $_REQUEST['tam'] . " , " . $imgBin; */
  /*  $sql="insert into producto (Id_prod,Est_prod,Tip_prod,Prov,Nam_prod,Carac_prod,Puntua_prod,Val_prod,Iva_prod,Presen_prod,Tam_prod,img_prod) values ($_REQUEST[ID],'1',$_REQUEST[tipo_prod],$_REQUEST[Provee],$_REQUEST[name],$_REQUEST[caracter],'0',$_REQUEST[valor],$_REQUEST[iva],$_REQUEST[presen],$_REQUEST[tam], $bits);";
     $resultado=$Conexion->query($sql);
           /*  */ 

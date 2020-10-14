@@ -11,7 +11,7 @@ session_start();
 if (isset ($_REQUEST["Continuar"])) {
   
   extract($_REQUEST);
-  echo $_REQUEST['Name'] . $_REQUEST['email'];
+  /* echo $_REQUEST['Name'] . $_REQUEST['email']; */
   if ($_REQUEST['Pass_3']==$_REQUEST['Pass_2']) {
    
     if (isset($_SESSION['Cliente'])) {
@@ -19,7 +19,7 @@ if (isset ($_REQUEST["Continuar"])) {
       $sql="select * from est_usu,cliente where (est_usu.Id_est_usu=cliente.Est_clie) and Id_clie='$_SESSION[Cliente]';";
       $resultado=$Conexion->query($sql);
       while ($Clie=$resultado->fetch_array() ) {
-            echo $_REQUEST['Pass_1'] . $Clie['Pass_clie'];
+           /*  echo $_REQUEST['Pass_1'] . $Clie['Pass_clie']; */
         if (password_verify($_REQUEST['Pass_1'], $Clie['Pass_clie'] )) {
 
           $pass=password_hash($_REQUEST['Pass_2'], PASSWORD_DEFAULT,['cost' => 10]);
