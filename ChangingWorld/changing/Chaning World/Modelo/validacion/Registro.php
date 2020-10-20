@@ -40,7 +40,7 @@ $pass=password_hash($_REQUEST['Pass'], PASSWORD_DEFAULT,['cost' => 10]);
           ";
         }else {
           echo "<script type='text/javascript'>alert('Esta Cuenta de usuario ya se encuentra registrada, intente nuevamente.');
-          window.location='../../Vista/formregistro.php';
+          window.location='../../Vista/frmregistro.php';
           </script>
           ";
         }

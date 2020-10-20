@@ -25,7 +25,7 @@ if (isset ($_REQUEST["Continuar"])) {
           $pass=password_hash($_REQUEST['Pass_2'], PASSWORD_DEFAULT,['cost' => 10]);
 
           $objClien = new Cliente();
-          $objClien->Crear_Cliente($_REQUEST['Name'],$_REQUEST['email'],$pass);
+          $objClien->Crear_Cliente('1',$_REQUEST['Name'],$_REQUEST['email'],$pass);
           $objClien->Actualizar_Cliente($_SESSION['Cliente']);
           echo "<script type='text/javascript'>alert('Se ha actualizado su usuario, gracias.');
           window.location='../../Vista/index.php';

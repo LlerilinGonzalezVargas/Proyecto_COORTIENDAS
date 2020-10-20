@@ -108,8 +108,7 @@ $this->Iva_prod=$Iva_prod;
 $this->Presen_prod=$Presen_prod;
 $this->Tam_prod=$Tam_prod;
 }
-/* INSERT INTO `producto` (`Id_prod`, `Est_prod`, `Tip_prod`, `Prov`, `Nam_prod`, `Carac_prod`, `Puntua_prod`, `Val_prod`, `Iva_prod`, `Presen_prod`, `Tam_prod`, `img_prod`) VALUES
-(100, 1, 1, 1002, 'Leche alpina entera', 'Leche alpina entera de 1100ml por unidad', 5, '3000.00', 19, 'Bolsa de 1100ml', '1100ml', '') */
+
 public function Agregar_Producto(){
   $this->Conexion=Conectarse();  
   $sql="insert into producto (Id_prod,Est_prod,Tip_prod,Prov,Nam_prod,Carac_prod,Puntua_prod,Val_prod,Iva_prod,Presen_prod,Tam_prod,img_prod) values ('$this->Id_prod','$this->EstadoProd_Id_est_prod','$this->TipProd_Id_tip_prod','$this->Proveedor_Id_prov','$this->Name_prod','$this->Carac_prod','$this->Puntua_prod','$this->Val_prod','$this->Iva_prod','$this->Presen_prod','$this->Tam_prod','$this->Img_prod');";
@@ -159,5 +158,6 @@ Public function Consultar_Productos(){
   return $resultado;	
 }
 
-}
+}/* INSERT INTO `producto` (`Id_prod`, `Est_prod`, `Tip_prod`, `Prov`, `Nam_prod`, `Carac_prod`, `Puntua_prod`, `Val_prod`, `Iva_prod`, `Presen_prod`, `Tam_prod`, `img_prod`) VALUES
+(100, 1, 1, 1002, 'Leche alpina entera', 'Leche alpina entera de 1100ml por unidad', 5, '3000.00', 19, 'Bolsa de 1100ml', '1100ml', '') */
 ?>

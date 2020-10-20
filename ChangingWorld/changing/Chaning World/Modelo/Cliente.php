@@ -69,14 +69,14 @@ public function Agregar_Cliente(){
 }
 Public function Actualizar_Cliente($Id_Clie){
   $this->Conexion=Conectarse();  
-  $sql="update cliente set Nam_clie='$this->Nam_clie', email_clie='$this->email_clie',Pass_clie='$this->Pass_clie'  where (Id_clie='$Id_Clie')";
+  $sql="UPDATE cliente set Nam_clie='$this->Nam_clie', email_clie='$this->email_clie',Pass_clie='$this->Pass_clie'  where (Id_clie='$Id_Clie')";
   $resultado=$this->Conexion->query($sql);
   $this->Conexion->close();
   return $resultado;
 } 
 Public function ConsultarCliente($Id_Clie){
   $this->Conexion=Conectarse();   
-  $sql="select Id_clie, Est_clie,name_est_usu, Nam_clie, email_clie, Pass_clie from est_usu,cliente where Id_clie='$Id_Clie' Est_clie='1' and (cliente.Est_clie=est_usu.Id_est_usu);";
+  $sql="select Id_clie, Est_clie,name_est_usu, Nam_clie, email_clie, Pass_clie from est_usu,cliente where Id_clie='$Id_Clie' and Est_clie='1' and (cliente.Est_clie=est_usu.Id_est_usu);";
   $resultado=$this->Conexion->query($sql);
  
   $this->Conexion->close();
